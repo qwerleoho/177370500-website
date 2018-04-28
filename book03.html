@@ -1,0 +1,99 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<script>
+$(document).ready(function()
+{   
+	// handle button clicks         
+  $('#buttonID').click(function() 
+	{
+		// make an ajax call
+		alert($('#formID').serialize());
+    $.ajax(
+		{
+            dataType: 'jsonp',
+            jsonpCallback: '_wrapper',
+            data: $('#formID').serialize(),
+            type: 'POST',
+            url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/actSignup",
+            success: handleButtonResponse,
+        });
+    });
+
+    function handleButtonResponse(data)
+    {
+      alert(data);
+      // parse the json string
+      var jsonObject = JSON.parse(data);
+      $('#reponseID').append( jsonObject.message );
+    }
+	
+	$("#btnAdd").click(function()
+	{
+		alert("callnow");
+		$.ajax(
+		{
+			url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/addList", 
+			type: 'POST',
+			data: $('#formID').serialize(),
+			success: function(result)
+			{
+				alert("successfully added");
+			},error: function (xhr, textStatus, errorThrown) 
+			{
+				alert("add failed");
+				console.log(textStatus);
+      	}
+		});
+	});
+	
+  $("#btnRemove").click(function()
+	{
+		alert("callnow");
+		$.ajax(
+		{
+			url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/removeList", 
+			type: 'POST',
+			data: $('#formID').serialize(),
+			success: function(result)
+			{
+				alert("successfully removed");
+			},error: function (xhr, textStatus, errorThrown) 
+			{
+				alert("remove failed");
+				console.log(textStatus);
+      	}
+		});
+	});
+});
+	
+	
+</script>
+<body>
+  <a href="/login"><h1>title</h1></a>
+  <h3>Drug affect for long term and short</h3>
+  <p>keyword: affect</p>
+  <p>Drug use can have a wide range of short- and long-term, direct and indirect effects. These effects often depend on the specific drug or drugs used, how they are taken, how much is taken, the person's health, and other factors. Short-term effects can range from changes in appetite, wakefulness, heart rate, blood pressure, and/or mood to heart attack, stroke, psychosis, overdose, and even death. These health effects may occur after just one use.
+
+Longer-term effects can include heart or lung disease, cancer, mental illness, HIV/AIDS, hepatitis, and others. Long-term drug use can also lead to addiction. Drug addiction is a brain disorder. Not everyone who uses drugs will become addicted, but for some, drug use can change how certain brain circuits work. These brain changes interfere with how people experience normal pleasures in life such as food and sex, their ability to control their stress level, their decision-making, their ability to learn and remember, etc. These changes make it much more difficult for someone to stop taking the drug even when it’s having negative effects on their life and they want to quit.
+
+Drug use can also have indirect effects on both the people who are taking drugs and on those around them. This can include affecting a person’s nutrition; sleep; decision-making and impulsivity; and risk for trauma, violence, injury, and communicable diseases. Drug use can also affect babies born to women who use drugs while pregnant. Broader negative outcomes may be seen in education level, employment, housing, relationships, and criminal justice involvement.
+
+
+
+</p>
+	<br>
+  <form id="formID" name="fav">
+			<input type="hidden" name="keyword" value="affect"/>
+		</form>
+  	<button id="btnAdd">
+    	Add favourite
+  	</button>
+  <button id="btnRemove">
+    Remove favourite
+  </button>
+</body>
+
+</html>

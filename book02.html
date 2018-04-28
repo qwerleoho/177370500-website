@@ -1,0 +1,109 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<script>
+$(document).ready(function()
+{   
+	// handle button clicks         
+  $('#buttonID').click(function() 
+	{
+		// make an ajax call
+		alert($('#formID').serialize());
+    $.ajax(
+		{
+            dataType: 'jsonp',
+            jsonpCallback: '_wrapper',
+            data: $('#formID').serialize(),
+            type: 'POST',
+            url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/actSignup",
+            success: handleButtonResponse,
+        });
+    });
+
+    function handleButtonResponse(data)
+    {
+      alert(data);
+      // parse the json string
+      var jsonObject = JSON.parse(data);
+      $('#reponseID').append( jsonObject.message );
+    }
+	
+	$("#btnAdd").click(function()
+	{
+		alert("callnow");
+		$.ajax(
+		{
+			url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/addList", 
+			type: 'POST',
+			data: $('#formID').serialize(),
+			success: function(result)
+			{
+				alert("successfully added");
+			},error: function (xhr, textStatus, errorThrown) 
+			{
+				alert("add failed");
+				console.log(textStatus);
+      	}
+		});
+	});
+	
+  $("#btnRemove").click(function()
+	{
+		alert("callnow");
+		$.ajax(
+		{
+			url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/removeList", 
+			type: 'POST',
+			data: $('#formID').serialize(),
+			success: function(result)
+			{
+				alert("successfully removed");
+			},error: function (xhr, textStatus, errorThrown) 
+			{
+				alert("remove failed");
+				console.log(textStatus);
+      	}
+		});
+	});
+});
+	
+	
+</script>
+
+
+
+
+<body>
+  <a href="/login"><h1>title</h1></a>
+  <h3>Dangers of Drug Addiction</h3>
+  <p>keyword: dangers</p>
+  <p>Even for professional counselors and doctors, it can be hard to identify the point where recreational drug use crosses over into addiction.
+
+But it isn’t hard to recognize the damage that drugs can cause to a person, a family or a community. The dangers of drug addiction are far-reaching, ranging from an individual to a national level. When you’re ready to confront your own addiction, your main concern should be how drug abuse can affect your life and the lives of those around you.
+
+The exact cause of drug addiction remains a mystery, but according to the National Institutes of Health, there are certain factors that may make certain people vulnerable to addiction:
+
+An underlying mental disorder, like schizophrenia, depression or generalized anxiety
+A low sense of self-worth combined with a tendency to respond to peer pressure
+Exposure to high levels of stress from personal, professional or financial sources
+Exposure to an environment where drug use is accepted and drugs are readily available
+Education alone isn’t enough to help an addict get clean. But learning about the dangers of drugs can be an important step if you’re thinking about experimenting with heroin, marijuana or meth — or if you’re wondering whether you’re ready to seek help for addiction.
+
+
+
+</p>
+	<br>
+  <form id="formID" name="fav">
+			<input type="hidden" name="keyword" value="dangers"/>
+		</form>
+  	<button id="btnAdd">
+    	Add favourite
+  	</button>
+  <button id="btnRemove">
+    Remove favourite
+  </button>
+</body>
+
+</html>

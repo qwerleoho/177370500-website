@@ -1,0 +1,92 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+ <style>
+
+  </style>
+<body onload="checkFav()">
+    	<br>
+  <table>
+    <tr>
+          <td>No.</td>
+           <td>keyword</td>
+          </tr>
+  <tr>
+          <td class = "favnum"></td>
+           <td class = "favlink"></td>
+          </tr>
+          <tr>
+          <td class = "favnum"></td>
+           <td class = "favlink"></td>
+          </tr>
+           <tr>
+          <td class = "favnum"></td>
+           <td class = "favlink"></td>
+          </tr>
+  </table>
+<script>
+$(document).ready(function()
+{   
+	// handle button clicks         
+  $('#buttonID').click(function() 
+	{
+		// make an ajax call
+		alert($('#formID').serialize());
+    $.ajax(
+		{
+            dataType: 'jsonp',
+            jsonpCallback: '_wrapper',
+            data: $('#formID').serialize(),
+            type: 'POST',
+            url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/actSignup",
+            success: handleButtonResponse,
+        });
+    });
+
+    function handleButtonResponse(data)
+    {
+      alert(data);
+      // parse the json string
+      var jsonObject = JSON.parse(data);
+      $('#reponseID').append( jsonObject.message );
+    }
+});
+  
+ function checkFav()
+ {
+			$.ajax({
+				 url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/actFav", 
+         type: 'GET',
+				 async: false,
+				 success: function(data){
+					 alert(data); //delete this line before taking the video
+				   alert(JSON.stringify(data)); //delete this line before taking the video
+					 var _stringObj = JSON.stringify(data);
+					 var stringObj = JSON.parse(data);
+					 if(stringObj.Msg != "Favour List is empty!")
+           {
+						 for(i = 0; i < stringObj.length; i++)
+             {
+               alert("user: " + stringObj[i].user + ", item: " + stringObj[i].key); //delete this line before taking the video
+							 var num = i + 1;
+							 document.getElementsByClassName("favnum")[i].innerHTML = num;
+							 document.getElementsByClassName("favlink")[i].innerHTML = stringObj[i].key;
+						 }
+					 }
+           else
+           {
+						
+					 }
+				 },
+				 error: function (xhr, textStatus, errorThrown) {
+         alert("error");
+			 	alert(xhr.responseText);
+				},	 
+		});
+	}
+</script>
+  <a href="/login">back</a>
+</body>
+
+</html>

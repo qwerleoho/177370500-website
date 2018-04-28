@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Drug Danger Blog - Drug disadventage</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./Fung/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="./Fung/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="./Fung/css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+<script>
+	
+	
+$(document).ready(function()
+{   
+	// handle button clicks         
+  $('#buttonID').click(function() 
+	{
+		// make an ajax call
+		alert($('#formID').serialize());
+    $.ajax(
+		{
+            dataType: 'jsonp',
+            jsonpCallback: '_wrapper',
+            data: $('#formID').serialize(),
+            type: 'POST',
+            url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/userSignup",
+            success: handleButtonResponse,
+        });
+    });
+
+    function handleButtonResponse(data)
+    {
+      alert(data);
+      // parse the json string
+      var jsonObject = JSON.parse(data);
+      $('#reponseID').append( jsonObject.message );
+    }
+	
+	$("#search").click(function()
+	{
+		alert("callnow"); //delete this line before taking the video
+		var tempSearch;
+		tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+		{
+			alert("Please fill the field.");
+		}
+		else
+		{
+			$.ajax(
+			{
+				url: "http://Fung-qwerleoho537948.codeanyapp.com:1500/actSearch", 
+				type: 'POST',
+				data: $('#formID').serialize(),
+				success: function(result)
+				{
+					alert("search success");
+			     var _stringObj = JSON.stringify(result);
+			     var stringObj = JSON.parse(result);
+			     for(i = 0; i < stringObj.length; i++)
+           {
+					   var num = i + 1;
+					   document.getElementsByClassName("searchnum")[i].innerHTML = num;
+					   document.getElementsByClassName("searchname")[i].innerHTML = stringObj[i].passagetitle;
+				     document.getElementsByClassName("searchlink")[i].innerHTML = stringObj[i].commandlink;
+				    }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+		
+      		}
+				});
+			}
+	});
+	
+});
+	
+	
+</script>
+
+
+
+
+<body>
+	<h1>Do not contact Drug</h1>
+	 <a href="/loginpage">log in</a>  <a href="/regpage">Sign up</a>
+	<br>
+  	<form id="formID" name="search">
+			search: <input type="text" name="searchkey"/>
+		</form>
+  	<button id="search">
+    	search
+  	</button>
+ <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Health is the greatest wealth</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="book01.html">book01 </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url: ./Fung/img/home-bg.jpg'">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Drug danger</h1>
+              <span class="subheading">This blog introduce about drug danger</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+            <a href="post.html">
+              <h2 class="post-title">
+                Drugs are not all the same. Different drugs have different dangers associated with them.
+              </h2>
+              <h3 class="post-subtitle">
+                Dangers of Drug Addiction
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#"></a>
+              on September 24, 2017</p>
+          </div>
+          <hr>
+          <div class="post-preview">
+            <a href="post.html">
+              <h2 class="post-title">
+               The drug
+              </h2>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#"></a>
+              on September 18, 2017</p>
+          </div>
+          <hr>
+          <div class="post-preview">
+            <a href="post.html">
+              <h2 class="post-title">
+                Drug use can have a wide range of short- and long-term, direct and indirect effects.
+              </h2>
+              <h3 class="post-subtitle">
+               Drug use can also have indirect effects on both the people who are taking drugs and on those around them.
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="#"></a>
+              on August 24, 2017</p>
+         
+          <hr>
+          <!-- Pager -->
+          <div class="clearfix">
+            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+  
+  <table id="searchtable">
+      <tr>
+          <td class = "searchnum"></td>
+           <td class = "searchname"></td>
+           <td class = "searchlink"></td>
+          </tr>
+          <tr>
+          <td class = "searchnum"></td>
+           <td class = "searchname"></td>
+           <td class = "searchlink"></td>
+          </tr>
+  
+  
+  </table>
+  
+  
+<iframe width="560" height="400" src="https://www.youtube.com/embed/tMxDA4524g8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  
+<div id="googleMap" style="width:50%;height:400px;"></div>
+
+<script>
+  
+<html>
+  <head>
+    <title></title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+      url:"./img/home-bg.jpg"
+    <style>
+       * {margin:0;
+           padding:0;
+}
+
+               #map {
+
+        height:500px
+width:100%
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeRj_SJ0bn2u60xYnlUh7AGlMvWAnUy6Q&callback=initMap"
+    async defer></script>
+  </body>
+</html>
+}
+
+</body>
+
+</html>
